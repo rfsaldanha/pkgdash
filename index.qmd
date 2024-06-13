@@ -14,11 +14,11 @@ library(ggthemes)
 # Packages list
 pkgs <- list(
   list(name = "nseq", start_date = "2024-05-31"),
-  list(name = "zendown", start_date = "2024-05-21"),
+  list(name = "zendown", start_date = "2024-04-12"),
   list(name = "zenstats", start_date = "2024-05-31"),
-  list(name = "brpop", start_date = "2023-10-24"),
+  list(name = "brpop", start_date = "2022-07-06"),
   list(name = "tidyrates", start_date = "2024-03-19"),
-  list(name = "brclimr", start_date = "2024-04-04")
+  list(name = "brclimr", start_date = "2023-03-07")
 )
 
 # Download stats
@@ -97,9 +97,9 @@ logs |>
 library(zenstats)
 source("era5_daily_ids.R")
 
-stats_la <- deposit_stats(era5_daily_la[1:3], all_versions_only = TRUE, progress = FALSE)
+stats_la <- deposit_stats(era5_daily_la, all_versions_only = TRUE, progress = FALSE)
 
-stats_africa <- deposit_stats(era5_daily_africa[1:3], all_versions_only = TRUE, progress = FALSE)
+stats_africa <- deposit_stats(era5_daily_africa, all_versions_only = TRUE, progress = FALSE)
 
 stats_zonal_brazil <- deposit_stats(c(10036212, 10947952), all_versions_only = TRUE, progress = FALSE)
 
