@@ -1,9 +1,9 @@
 ---
-title: "Packages on CRAN"
+title: "Packages & Datasets"
 author: "Raphael Saldanha"
 ---
 
-```{r, "setup"}
+```{r, "setup package stats"}
 #| echo: false
 #| message: false
 library(dplyr)
@@ -35,8 +35,19 @@ rm(tmp, p)
 
 ```
 
+# Packages on CRAN
 
 ## Row {height = 20%}
+
+```{r}
+#| content: valuebox
+#| title: "Dashboard update"
+list(
+  icon = "calendar",
+  color = "primary",
+  value = Sys.time()
+)
+```
 
 ```{r}
 #| content: valuebox
@@ -54,16 +65,6 @@ list(
   icon = "cloud-download",
   color = "primary",
   value = sum(logs$count, na.rm = TRUE)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Update"
-list(
-  icon = "calendar",
-  color = "primary",
-  value = Sys.time()
 )
 ```
 
@@ -85,3 +86,121 @@ logs |>
   theme(legend.position = "bottom", legend.direction = "horizontal") +
   labs(x = "Date", y = "Cumulative downloads", colour = "")
 ```
+
+
+# Datasets
+
+```{r, "setup dataset stats"}
+#| echo: false
+#| warning: false
+
+library(zenstats)
+source("era5_daily_ids.R")
+
+stats_la <- deposit_stats(era5_daily_la[1:3], all_versions_only = TRUE, progress = FALSE)
+
+stats_africa <- deposit_stats(era5_daily_africa[1:3], all_versions_only = TRUE, progress = FALSE)
+
+stats_zonal_brazil <- deposit_stats(c(10036212, 10947952), all_versions_only = TRUE, progress = FALSE)
+
+stats_road_dist <- deposit_stats(11400243, all_versions_only = TRUE, progress = FALSE)
+```
+
+## Row {height = 20%}
+
+ERA5-Land Daily aggregates, Latin America
+
+```{r}
+#| content: valuebox
+#| title: "Views"
+list(
+  icon = "eye",
+  color = "primary",
+  value = sum(stats_la$views, na.rm = TRUE)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Downloads"
+list(
+  icon = "cloud-download",
+  color = "primary",
+  value = sum(stats_la$downloads, na.rm = TRUE)
+)
+```
+
+## Row {height = 20%}
+
+ERA5-Land Daily aggregates, Africa
+
+```{r}
+#| content: valuebox
+#| title: "Views"
+list(
+  icon = "eye",
+  color = "primary",
+  value = sum(stats_africa$views, na.rm = TRUE)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Downloads"
+list(
+  icon = "cloud-download",
+  color = "primary",
+  value = sum(stats_africa$downloads, na.rm = TRUE)
+)
+```
+
+
+## Row {height = 20%}
+
+Zonal Statistics of Climate Indicators from ERA5-Land for Brazilian Municipalities
+
+```{r}
+#| content: valuebox
+#| title: "Views"
+list(
+  icon = "eye",
+  color = "primary",
+  value = sum(stats_zonal_brazil$views, na.rm = TRUE)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Downloads"
+list(
+  icon = "cloud-download",
+  color = "primary",
+  value = sum(stats_zonal_brazil$downloads, na.rm = TRUE)
+)
+```
+
+## Row {height = 20%}
+
+Road distances and trip duration matrix for Brazilian municipalities
+
+```{r}
+#| content: valuebox
+#| title: "Views"
+list(
+  icon = "eye",
+  color = "primary",
+  value = sum(stats_road_dist$views, na.rm = TRUE)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Downloads"
+list(
+  icon = "cloud-download",
+  color = "primary",
+  value = sum(stats_road_dist$downloads, na.rm = TRUE)
+)
+```
+
+
