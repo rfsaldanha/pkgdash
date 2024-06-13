@@ -1,0 +1,87 @@
+---
+title: "Packages on CRAN"
+author: "Raphael Saldanha"
+---
+
+```{r, "setup"}
+#| echo: false
+#| message: false
+library(dplyr)
+library(cranlogs)
+library(ggplot2)
+library(ggthemes)
+
+# Packages list
+pkgs <- list(
+  list(name = "nseq", start_date = "2024-05-31"),
+  list(name = "zendown", start_date = "2024-05-21"),
+  list(name = "zenstats", start_date = "2024-05-31"),
+  list(name = "brpop", start_date = "2023-10-24"),
+  list(name = "tidyrates", start_date = "2024-03-19"),
+  list(name = "brclimr", start_date = "2024-04-04")
+)
+
+# Download stats
+logs <- tibble()
+for(p in 1:length(pkgs)){
+  tmp <- cran_downloads(
+    packages = pkgs[[p]]$name, 
+    from = pkgs[[p]]$start_date, 
+    to = "last-day"
+  )
+  logs <- bind_rows(logs, tmp)
+}
+rm(tmp, p)
+
+```
+
+
+## Row {height = 20%}
+
+```{r}
+#| content: valuebox
+#| title: "Number of packages"
+list(
+  color = "primary",
+  value = length(pkgs)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Total downloads"
+list(
+  icon = "cloud-download",
+  color = "primary",
+  value = sum(logs$count, na.rm = TRUE)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Update"
+list(
+  icon = "calendar",
+  color = "primary",
+  value = Sys.time()
+)
+```
+
+## Row {height = 80%}
+
+```{r}
+#| fig-width: 15
+#| echo: false
+
+logs |>
+  group_by(package) |>
+  arrange(date) |>
+  mutate(count = cumsum(count)) |>
+  ungroup() |>
+  ggplot(aes(x = date, y = count, colour = package)) +
+  geom_line(linewidth = 1, alpha = .7) +
+  scale_colour_solarized() +
+  theme_solarized(light=FALSE) +
+  theme(legend.position = "bottom", legend.direction = "horizontal") +
+  labs(x = "Date", y = "Cumulative downloads", colour = "")
+```
