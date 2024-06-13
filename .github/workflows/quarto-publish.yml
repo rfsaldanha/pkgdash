@@ -36,6 +36,8 @@ jobs:
             any::cranlogs
             any::ggplot2
             any::ggthemes
+            any::knitr
+            any::rmarkdown
 
       - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
