@@ -112,6 +112,16 @@ ERA5-Land Daily aggregates, Latin America
 
 ```{r}
 #| content: valuebox
+#| title: "Files"
+list(
+  icon = "files",
+  color = "primary",
+  value = nrow(stats_la)
+)
+```
+
+```{r}
+#| content: valuebox
 #| title: "Views"
 list(
   icon = "eye",
@@ -133,6 +143,16 @@ list(
 ## Row {height = 20%}
 
 ERA5-Land Daily aggregates, Africa
+
+```{r}
+#| content: valuebox
+#| title: "Files"
+list(
+  icon = "files",
+  color = "primary",
+  value = nrow(stats_africa)
+)
+```
 
 ```{r}
 #| content: valuebox
@@ -161,6 +181,16 @@ Zonal Statistics of Climate Indicators from ERA5-Land for Brazilian Municipaliti
 
 ```{r}
 #| content: valuebox
+#| title: "Files"
+list(
+  icon = "files",
+  color = "primary",
+  value = nrow(stats_zonal_brazil)
+)
+```
+
+```{r}
+#| content: valuebox
 #| title: "Views"
 list(
   icon = "eye",
@@ -182,6 +212,16 @@ list(
 ## Row {height = 20%}
 
 Road distances and trip duration matrix for Brazilian municipalities
+
+```{r}
+#| content: valuebox
+#| title: "Files"
+list(
+  icon = "files",
+  color = "primary",
+  value = nrow(stats_road_dist)
+)
+```
 
 ```{r}
 #| content: valuebox
