@@ -30,12 +30,12 @@ jobs:
 
       - name: Setup R dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
-          with:
-            packages:
-              any::dplyr
-              any::cranlogs
-              any::ggplot2
-              any::ggthemes
+        with:
+          packages:
+            any::dplyr
+            any::cranlogs
+            any::ggplot2
+            any::ggthemes
 
       - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
