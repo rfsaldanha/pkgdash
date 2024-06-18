@@ -18,7 +18,8 @@ pkgs <- list(
   list(name = "zenstats", start_date = "2024-05-31"),
   list(name = "brpop", start_date = "2022-07-06"),
   list(name = "tidyrates", start_date = "2024-03-19"),
-  list(name = "brclimr", start_date = "2023-03-07")
+  list(name = "brclimr", start_date = "2023-03-07"),
+  list(name = "microdatasus", start_date = "2024-06-16")
 )
 
 # Download stats
