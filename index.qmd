@@ -105,6 +105,8 @@ stats_africa <- deposit_stats(era5_daily_africa, all_versions_only = TRUE, progr
 stats_zonal_brazil <- deposit_stats(c(10036212, 10947952), all_versions_only = TRUE, progress = FALSE)
 
 stats_road_dist <- deposit_stats(11400243, all_versions_only = TRUE, progress = FALSE)
+
+stats_road_usa_dist <- deposit_stats(13906981, all_versions_only = TRUE, progress = FALSE)
 ```
 
 ## Row {height = 20%}
@@ -244,4 +246,36 @@ list(
 )
 ```
 
+## Row {height = 20%}
 
+Road distances and trip duration matrix for USA counties
+
+```{r}
+#| content: valuebox
+#| title: "Files"
+list(
+  icon = "files",
+  color = "primary",
+  value = nrow(stats_road_usa_dist)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Views"
+list(
+  icon = "eye",
+  color = "primary",
+  value = sum(stats_road_usa_dist$views, na.rm = TRUE)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Downloads"
+list(
+  icon = "cloud-download",
+  color = "primary",
+  value = sum(stats_road_usa_dist$downloads, na.rm = TRUE)
+)
+```
