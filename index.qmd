@@ -117,7 +117,7 @@ ERA5-Land Daily aggregates, Latin America
 
 ```{r}
 #| content: valuebox
-#| title: "Files"
+#| title: "Deposits"
 list(
   icon = "files",
   color = "primary",
@@ -151,7 +151,7 @@ ERA5-Land Daily aggregates, Africa
 
 ```{r}
 #| content: valuebox
-#| title: "Files"
+#| title: "Deposits"
 list(
   icon = "files",
   color = "primary",
@@ -186,7 +186,7 @@ Zonal Statistics of Climate Indicators from ERA5-Land for Brazilian Municipaliti
 
 ```{r}
 #| content: valuebox
-#| title: "Files"
+#| title: "Deposits"
 list(
   icon = "files",
   color = "primary",
@@ -220,7 +220,7 @@ Climatological normals and indicators for Brazilian municipalities
 
 ```{r}
 #| content: valuebox
-#| title: "Files"
+#| title: "Deposits"
 list(
   icon = "files",
   color = "primary",
@@ -244,7 +244,7 @@ list(
 list(
   icon = "cloud-download",
   color = "primary",
-  value = sum(stats_zonal_brazil$downloads, na.rm = TRUE)
+  value = sum(stats_normal_brazil$downloads, na.rm = TRUE)
 )
 ```
 
@@ -254,7 +254,7 @@ Road distances and trip duration matrix for Brazilian municipalities
 
 ```{r}
 #| content: valuebox
-#| title: "Files"
+#| title: "Deposits"
 list(
   icon = "files",
   color = "primary",
@@ -288,7 +288,7 @@ Road distances and trip duration matrix for USA counties
 
 ```{r}
 #| content: valuebox
-#| title: "Files"
+#| title: "Deposits"
 list(
   icon = "files",
   color = "primary",
