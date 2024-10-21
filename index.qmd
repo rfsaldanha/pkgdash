@@ -109,6 +109,8 @@ stats_normal_brazil <- deposit_stats(c(13934888), all_versions_only = TRUE, prog
 stats_road_dist <- deposit_stats(11400243, all_versions_only = TRUE, progress = FALSE)
 
 stats_road_usa_dist <- deposit_stats(13906981, all_versions_only = TRUE, progress = FALSE)
+
+stats_brpop <- deposit_stats(13946877, all_versions_only = TRUE, progress = FALSE)
 ```
 
 ## Row {height = 20%}
@@ -313,5 +315,39 @@ list(
   icon = "cloud-download",
   color = "primary",
   value = sum(stats_road_usa_dist$downloads, na.rm = TRUE)
+)
+```
+
+## Row {height = 20%}
+
+brpop package dataset
+
+```{r}
+#| content: valuebox
+#| title: "Deposits"
+list(
+  icon = "files",
+  color = "primary",
+  value = nrow(stats_brpop)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Views"
+list(
+  icon = "eye",
+  color = "primary",
+  value = sum(stats_brpop$views, na.rm = TRUE)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Downloads"
+list(
+  icon = "cloud-download",
+  color = "primary",
+  value = sum(stats_brpop$downloads, na.rm = TRUE)
 )
 ```
