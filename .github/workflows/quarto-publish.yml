@@ -38,6 +38,7 @@ jobs:
             any::knitr
             any::rmarkdown
             any::zenstats
+            any::gt
 
       - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
