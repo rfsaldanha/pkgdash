@@ -96,7 +96,7 @@ logs |>
 #| warning: false
 
 library(zenstats)
-library(DT)
+library(gt)
 source("era5_daily_ids.R")
 
 stats_la <- deposit_stats(era5_daily_la, all_versions_only = TRUE, progress = FALSE) |>
@@ -170,5 +170,5 @@ stats_table <- bind_rows(
 
 
 ```{r}
-datatable()(stats_table)
+gt(stats_table)
 ```
