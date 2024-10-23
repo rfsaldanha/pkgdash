@@ -96,258 +96,79 @@ logs |>
 #| warning: false
 
 library(zenstats)
+library(gt)
 source("era5_daily_ids.R")
 
-stats_la <- deposit_stats(era5_daily_la, all_versions_only = TRUE, progress = FALSE)
+stats_la <- deposit_stats(era5_daily_la, all_versions_only = TRUE, progress = FALSE) |>
+  mutate(name = "ERA5-Land Daily aggregates, Latin America") |>
+  summarise(
+    views = sum(views),
+    downloads = sum(downloads),
+    .by = name
+  )
 
-stats_africa <- deposit_stats(era5_daily_africa, all_versions_only = TRUE, progress = FALSE)
+stats_africa <- deposit_stats(era5_daily_africa, all_versions_only = TRUE, progress = FALSE) |>
+  mutate(name = "ERA5-Land Daily aggregates, Africa") |>
+  summarise(
+    views = sum(views),
+    downloads = sum(downloads),
+    .by = name
+  )
 
-stats_zonal_brazil <- deposit_stats(c(10036212, 10947952), all_versions_only = TRUE, progress = FALSE)
+stats_zonal_brazil <- deposit_stats(c(10036212, 10947952), all_versions_only = TRUE, progress = FALSE) |>
+  mutate(name = "Zonal Statistics of Climate Indicators from ERA5-Land for Brazilian Municipalities") |>
+  summarise(
+    views = sum(views),
+    downloads = sum(downloads),
+    .by = name
+  )
 
-stats_normal_brazil <- deposit_stats(c(13934888), all_versions_only = TRUE, progress = FALSE)
+stats_normal_brazil <- deposit_stats(c(13934888), all_versions_only = TRUE, progress = FALSE) |>
+  mutate(name = "Climatological normals and indicators for Brazilian municipalities") |>
+  summarise(
+    views = sum(views),
+    downloads = sum(downloads),
+    .by = name
+  )
 
-stats_road_dist <- deposit_stats(11400243, all_versions_only = TRUE, progress = FALSE)
+stats_road_dist <- deposit_stats(11400243, all_versions_only = TRUE, progress = FALSE) |>
+  mutate(name = "Road distances and trip duration matrix for Brazilian municipalities") |>
+  summarise(
+    views = sum(views),
+    downloads = sum(downloads),
+    .by = name
+  )
 
-stats_road_usa_dist <- deposit_stats(13906981, all_versions_only = TRUE, progress = FALSE)
+stats_road_usa_dist <- deposit_stats(13906981, all_versions_only = TRUE, progress = FALSE) |>
+  mutate(name = "Road distances and trip duration matrix for USA counties") |>
+  summarise(
+    views = sum(views),
+    downloads = sum(downloads),
+    .by = name
+  )
 
-stats_brpop <- deposit_stats(13946877, all_versions_only = TRUE, progress = FALSE)
-```
+stats_brpop <- deposit_stats(13946877, all_versions_only = TRUE, progress = FALSE) |>
+  mutate(name = "brpop package dataset") |>
+  summarise(
+    views = sum(views),
+    downloads = sum(downloads),
+    .by = name
+  )
 
-## Row {height = 20%}
-
-ERA5-Land Daily aggregates, Latin America
-
-```{r}
-#| content: valuebox
-#| title: "Deposits"
-list(
-  icon = "files",
-  color = "primary",
-  value = nrow(stats_la)
+stats_table <- bind_rows(
+  stats_la,
+  stats_africa,
+  stats_zonal_brazil,
+  stats_normal_brazil,
+  stats_road_dist,
+  stats_road_usa_dist,
+  stats_brpop
 )
 ```
 
-```{r}
-#| content: valuebox
-#| title: "Views"
-list(
-  icon = "eye",
-  color = "primary",
-  value = sum(stats_la$views, na.rm = TRUE)
-)
-```
+## Row {height = 100%}
+
 
 ```{r}
-#| content: valuebox
-#| title: "Downloads"
-list(
-  icon = "cloud-download",
-  color = "primary",
-  value = sum(stats_la$downloads, na.rm = TRUE)
-)
-```
-
-## Row {height = 20%}
-
-ERA5-Land Daily aggregates, Africa
-
-```{r}
-#| content: valuebox
-#| title: "Deposits"
-list(
-  icon = "files",
-  color = "primary",
-  value = nrow(stats_africa)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Views"
-list(
-  icon = "eye",
-  color = "primary",
-  value = sum(stats_africa$views, na.rm = TRUE)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Downloads"
-list(
-  icon = "cloud-download",
-  color = "primary",
-  value = sum(stats_africa$downloads, na.rm = TRUE)
-)
-```
-
-
-## Row {height = 20%}
-
-Zonal Statistics of Climate Indicators from ERA5-Land for Brazilian Municipalities
-
-```{r}
-#| content: valuebox
-#| title: "Deposits"
-list(
-  icon = "files",
-  color = "primary",
-  value = nrow(stats_zonal_brazil)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Views"
-list(
-  icon = "eye",
-  color = "primary",
-  value = sum(stats_zonal_brazil$views, na.rm = TRUE)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Downloads"
-list(
-  icon = "cloud-download",
-  color = "primary",
-  value = sum(stats_zonal_brazil$downloads, na.rm = TRUE)
-)
-```
-
-## Row {height = 20%}
-
-Climatological normals and indicators for Brazilian municipalities
-
-```{r}
-#| content: valuebox
-#| title: "Deposits"
-list(
-  icon = "files",
-  color = "primary",
-  value = nrow(stats_normal_brazil)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Views"
-list(
-  icon = "eye",
-  color = "primary",
-  value = sum(stats_normal_brazil$views, na.rm = TRUE)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Downloads"
-list(
-  icon = "cloud-download",
-  color = "primary",
-  value = sum(stats_normal_brazil$downloads, na.rm = TRUE)
-)
-```
-
-## Row {height = 20%}
-
-Road distances and trip duration matrix for Brazilian municipalities
-
-```{r}
-#| content: valuebox
-#| title: "Deposits"
-list(
-  icon = "files",
-  color = "primary",
-  value = nrow(stats_road_dist)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Views"
-list(
-  icon = "eye",
-  color = "primary",
-  value = sum(stats_road_dist$views, na.rm = TRUE)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Downloads"
-list(
-  icon = "cloud-download",
-  color = "primary",
-  value = sum(stats_road_dist$downloads, na.rm = TRUE)
-)
-```
-
-## Row {height = 20%}
-
-Road distances and trip duration matrix for USA counties
-
-```{r}
-#| content: valuebox
-#| title: "Deposits"
-list(
-  icon = "files",
-  color = "primary",
-  value = nrow(stats_road_usa_dist)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Views"
-list(
-  icon = "eye",
-  color = "primary",
-  value = sum(stats_road_usa_dist$views, na.rm = TRUE)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Downloads"
-list(
-  icon = "cloud-download",
-  color = "primary",
-  value = sum(stats_road_usa_dist$downloads, na.rm = TRUE)
-)
-```
-
-## Row {height = 20%}
-
-brpop package dataset
-
-```{r}
-#| content: valuebox
-#| title: "Deposits"
-list(
-  icon = "files",
-  color = "primary",
-  value = nrow(stats_brpop)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Views"
-list(
-  icon = "eye",
-  color = "primary",
-  value = sum(stats_brpop$views, na.rm = TRUE)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Downloads"
-list(
-  icon = "cloud-download",
-  color = "primary",
-  value = sum(stats_brpop$downloads, na.rm = TRUE)
-)
+gt(stats_table)
 ```
