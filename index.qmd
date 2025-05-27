@@ -24,10 +24,10 @@ pkgs <- list(
 
 # Download stats
 logs <- tibble()
-for(p in 1:length(pkgs)){
+for (p in 1:length(pkgs)) {
   tmp <- cran_downloads(
-    packages = pkgs[[p]]$name, 
-    from = pkgs[[p]]$start_date, 
+    packages = pkgs[[p]]$name,
+    from = pkgs[[p]]$start_date,
     to = "last-day"
   )
   logs <- bind_rows(logs, tmp)
@@ -83,7 +83,7 @@ logs |>
   ggplot(aes(x = date, y = count, colour = package)) +
   geom_line(linewidth = 1, alpha = .7) +
   scale_colour_solarized() +
-  theme_solarized(light=FALSE) +
+  theme_solarized(light = FALSE) +
   theme(legend.position = "bottom", legend.direction = "horizontal") +
   labs(x = "Date", y = "Cumulative downloads", colour = "")
 ```
@@ -99,7 +99,11 @@ library(zenstats)
 library(gt)
 source("era5_daily_ids.R")
 
-stats_la <- deposit_stats(era5_daily_la, all_versions_only = TRUE, progress = FALSE) |>
+stats_la <- deposit_stats(
+  era5_daily_la,
+  all_versions_only = TRUE,
+  progress = FALSE
+) |>
   mutate(name = "ERA5-Land Daily aggregates, Latin America") |>
   summarise(
     views = sum(views),
@@ -107,7 +111,11 @@ stats_la <- deposit_stats(era5_daily_la, all_versions_only = TRUE, progress = FA
     .by = name
   )
 
-stats_africa <- deposit_stats(era5_daily_africa, all_versions_only = TRUE, progress = FALSE) |>
+stats_africa <- deposit_stats(
+  era5_daily_africa,
+  all_versions_only = TRUE,
+  progress = FALSE
+) |>
   mutate(name = "ERA5-Land Daily aggregates, Africa") |>
   summarise(
     views = sum(views),
@@ -115,31 +123,53 @@ stats_africa <- deposit_stats(era5_daily_africa, all_versions_only = TRUE, progr
     .by = name
   )
 
-stats_zonal_brazil <- deposit_stats(c(10036212, 10947952), all_versions_only = TRUE, progress = FALSE) |>
-  mutate(name = "Zonal Statistics of Climate Indicators from ERA5-Land for Brazilian Municipalities") |>
+stats_zonal_brazil <- deposit_stats(
+  c(10036212, 10947952),
+  all_versions_only = TRUE,
+  progress = FALSE
+) |>
+  mutate(
+    name = "Zonal Statistics of Climate Indicators from ERA5-Land for Brazilian Municipalities"
+  ) |>
   summarise(
     views = sum(views),
     downloads = sum(downloads),
     .by = name
   )
 
-stats_normal_brazil <- deposit_stats(c(13934888), all_versions_only = TRUE, progress = FALSE) |>
-  mutate(name = "Climatological normals and indicators for Brazilian municipalities") |>
+stats_normal_brazil <- deposit_stats(
+  c(15519719),
+  all_versions_only = TRUE,
+  progress = FALSE
+) |>
+  mutate(
+    name = "Climatological normals and indicators for Brazilian municipalities"
+  ) |>
   summarise(
     views = sum(views),
     downloads = sum(downloads),
     .by = name
   )
 
-stats_road_dist <- deposit_stats(11400243, all_versions_only = TRUE, progress = FALSE) |>
-  mutate(name = "Road distances and trip duration matrix for Brazilian municipalities") |>
+stats_road_dist <- deposit_stats(
+  11400243,
+  all_versions_only = TRUE,
+  progress = FALSE
+) |>
+  mutate(
+    name = "Road distances and trip duration matrix for Brazilian municipalities"
+  ) |>
   summarise(
     views = sum(views),
     downloads = sum(downloads),
     .by = name
   )
 
-stats_road_usa_dist <- deposit_stats(13906981, all_versions_only = TRUE, progress = FALSE) |>
+stats_road_usa_dist <- deposit_stats(
+  13906981,
+  all_versions_only = TRUE,
+  progress = FALSE
+) |>
   mutate(name = "Road distances and trip duration matrix for USA counties") |>
   summarise(
     views = sum(views),
@@ -147,7 +177,11 @@ stats_road_usa_dist <- deposit_stats(13906981, all_versions_only = TRUE, progres
     .by = name
   )
 
-stats_brpop <- deposit_stats(13946877, all_versions_only = TRUE, progress = FALSE) |>
+stats_brpop <- deposit_stats(
+  13946877,
+  all_versions_only = TRUE,
+  progress = FALSE
+) |>
   mutate(name = "brpop package dataset") |>
   summarise(
     views = sum(views),
