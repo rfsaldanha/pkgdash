@@ -124,7 +124,7 @@ stats_africa <- deposit_stats(
   )
 
 stats_zonal_brazil <- deposit_stats(
-  c(10036212, 10947952),
+  c(10036212, 10947952, 15748125),
   all_versions_only = TRUE,
   progress = FALSE
 ) |>
