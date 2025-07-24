@@ -189,6 +189,18 @@ stats_brpop <- deposit_stats(
     .by = name
   )
 
+stats_brpm25 <- deposit_stats(
+  16374139,
+  all_versions_only = TRUE,
+  progress = FALSE
+) |>
+  mutate(name = "Brasil PM2.5") |>
+  summarise(
+    views = sum(views),
+    downloads = sum(downloads),
+    .by = name
+  )
+
 stats_table <- bind_rows(
   stats_la,
   stats_africa,
@@ -196,7 +208,8 @@ stats_table <- bind_rows(
   stats_normal_brazil,
   stats_road_dist,
   stats_road_usa_dist,
-  stats_brpop
+  stats_brpop,
+  stats_brpm25
 )
 ```
 
